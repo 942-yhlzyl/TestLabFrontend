@@ -33,7 +33,7 @@
 <script>
 export default {
   name: "Login",
-  data () {
+  data() {
     return {
       loginForm: {
         username: '',
@@ -46,32 +46,30 @@ export default {
       loading: false
     }
   },
-  methods:{
-    goTo(path)
-    {
+  methods: {
+    goTo(path) {
       this.$router.replace(path);
     },
-    login () {
+    login() {
       this.$axios.post('/login', {
         username: this.loginForm.username,
         password: this.loginForm.password
       })
           .then(resp => {
-            if (resp.status === 200 && resp.data.hasOwnProperty.call(resp,"token")) {
+            if (resp.status === 200 && resp.data.hasOwnProperty.call(resp, "token")) {
               this.$store.commit('login', resp.data);
-              document.getElementById("information").innerHTML="";
-              sessionStorage.setItem("user",this.loginForm.username);
+              document.getElementById("information").innerHTML = "";
+              sessionStorage.setItem("user", this.loginForm.username);
               this.$router.replace({path: '/Homepage'})
-            } else if (resp.status===404) {
-              document.getElementById("information").innerHTML="<div class='alert alert-danger'>用户不存在！</div>";
-            } else if (resp.status===200 || resp.status===403)
-            {
-              document.getElementById("information").innerHTML="<div class='alert alert-danger'>密码错误！</div>";
+            } else if (resp.status === 404) {
+              document.getElementById("information").innerHTML = "<div class='alert alert-danger'>用户不存在！</div>";
+            } else if (resp.status === 200 || resp.status === 403) {
+              document.getElementById("information").innerHTML = "<div class='alert alert-danger'>密码错误！</div>";
             }
           })
           .catch(error => {
             console.log(error);
-            document.getElementById("information").innerHTML="<div class='alert alert-danger'>login error</div>";
+            document.getElementById("information").innerHTML = "<div class='alert alert-danger'>login error</div>";
           })
     }
   }
