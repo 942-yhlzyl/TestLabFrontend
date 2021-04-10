@@ -14,9 +14,10 @@
       <el-submenu index="4">
         <template slot="title">存款业务</template>
         <el-menu-item index="4-1">购买产品</el-menu-item>
-        <el-menu-item index="4-2">存款产品</el-menu-item>
+        <el-menu-item index="4-2">查看产品</el-menu-item>
       </el-submenu>
     </el-menu>
+    <div id="desktop"></div>
   </div>
 </template>
 
@@ -34,20 +35,24 @@ export default {
       this.$router.replace(path);
     },
     handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-      switch (keyPath){
-        case ["1"]:
+      switch (keyPath.join()){
+        case "1":
           this.goTo('/Homepage');
           break;
-        case ["2","2-1"]:
+        case "2,2-1"://贷款账户管理
+          console.log(key, keyPath);
           break;
-        case ["2","2-2"]:
+        case "2,2-2"://贷款日终处理
+          console.log(key, keyPath);
           break;
-        case ["3","3-1"]:
+        case "3,3-1"://交易流水查询
+          console.log(key, keyPath);
           break;
-        case ["4","4-1"]:
+        case "4,4-1"://购买产品
+          console.log(key, keyPath);
           break;
-        case ["4","4-2"]:
+        case "4,4-2"://查看产品
+          console.log(key, keyPath);
           break;
       }
     }
