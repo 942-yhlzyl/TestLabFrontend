@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Login from './../components/Login'
 import Homepage from './../components/Homepage'
 import store from './../store'
+import loanDetails from "./../components/LoanDetails";
 
 Vue.use(Router);
 
@@ -28,6 +29,14 @@ export const router = new Router({
             path: '/homepage',
             name: 'Homepage',
             component: Homepage,
+            meta: {
+                requireAuth: true
+            }
+        },
+        {
+            path: '/loanDetails',
+            name: 'LoanDetails',
+            component: loanDetails,
             meta: {
                 requireAuth: true
             }

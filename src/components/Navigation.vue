@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+    <el-menu class="el-menu-demo" mode="horizontal" @select="handleSelect">
       <el-menu-item index="1">返回主页</el-menu-item>
       <el-submenu index="2">
         <template slot="title">贷款业务</template>
@@ -24,11 +24,6 @@
 <script>
 export default {
   name: "Navigation",
-  data(){
-    return {
-      activeIndex : '1'
-    }
-  },
   methods: {
     goTo(path)
     {
@@ -37,7 +32,7 @@ export default {
     handleSelect(key, keyPath) {
       switch (keyPath.join()){
         case "1":
-          this.goTo('/Homepage');
+          if (this.$route.path!=="/homepage") this.goTo("/homepage");
           break;
         case "2,2-1"://贷款账户管理
           console.log(key, keyPath);

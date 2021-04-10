@@ -1,15 +1,17 @@
 <template>
   <div>
     <Navigation></Navigation>
+    <ManageLoan></ManageLoan>
   </div>
 </template>
 
 <script>
 import Navigation from "@/components/Navigation";
+import ManageLoan from "@/components/ManageLoan";
 
 export default {
-  name: "Homepage",
-  components: {Navigation}
+  name: "homepage",
+  components: {ManageLoan, Navigation}
 }
 </script>
 

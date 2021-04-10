@@ -27,7 +27,8 @@
                      v-on:click="login">login</el-button>
         </el-form-item>
       </el-form>
-    </div></div>
+    </div>
+  </div>
 </template>
 
 <script>
