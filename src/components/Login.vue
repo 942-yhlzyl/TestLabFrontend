@@ -51,12 +51,14 @@ export default {
       this.$router.replace(path);
     },
     login() {
-      this.$axios.post('/login', {
+      this.$axios.post('/login',{
         username: this.loginForm.username,
         password: this.loginForm.password
       })
           .then(resp => {
-            if (resp.status === 200 && resp.data.hasOwnProperty.call(resp, "token")) {
+            console.log(resp.data);
+            console.log(resp.data.hasOwnProperty.call(resp, "token"));
+            if (resp.status === 200 && resp.data.hasOwnProperty.call(resp.data, "token")) {
               this.$store.commit('login', resp.data);
               document.getElementById("information").innerHTML = "";
               sessionStorage.setItem("user", this.loginForm.username);

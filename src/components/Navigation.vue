@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="1" @click="goTo('/Homepage')">返回主页</el-menu-item>
+      <el-menu-item index="1">返回主页</el-menu-item>
       <el-submenu index="2">
         <template slot="title">贷款业务</template>
         <el-menu-item index="2-1">贷款账户管理</el-menu-item>
@@ -23,11 +23,34 @@
 <script>
 export default {
   name: "Navigation",
+  data(){
+    return {
+      activeIndex : '1'
+    }
+  },
   methods: {
     goTo(path)
     {
       this.$router.replace(path);
     },
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+      switch (keyPath){
+        case ["1"]:
+          this.goTo('/Homepage');
+          break;
+        case ["2","2-1"]:
+          break;
+        case ["2","2-2"]:
+          break;
+        case ["3","3-1"]:
+          break;
+        case ["4","4-1"]:
+          break;
+        case ["4","4-2"]:
+          break;
+      }
+    }
   }
 }
 </script>
